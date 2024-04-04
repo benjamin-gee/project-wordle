@@ -3,13 +3,12 @@ import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { range } from "../../utils";
 import Guess from "../Guess";
 
-function GuessGrid({ guesses }) {
+function GuessGrid({ guesses, answer }) {
     const paddedGuesses = padGuesses(guesses);
-    console.log({ paddedGuesses });
     return (
         <div className='guess-results'>
             {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
-                <Guess key={num} guess={paddedGuesses[num]} />
+                <Guess key={num} guess={paddedGuesses[num]} answer={answer} />
             ))}
         </div>
     );

@@ -23,7 +23,7 @@ function Game() {
     };
     return (
         <>
-            <GuessGrid guesses={guesses} />
+            <GuessGrid guesses={guesses} answer={answer} />
             <PreviousGuessList guesses={guesses} />
             <GuessInput
                 updateGuesses={updateGuesses}
