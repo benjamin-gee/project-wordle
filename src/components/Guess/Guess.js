@@ -1,14 +1,19 @@
 import React from "react";
+import EmptyGuess from "../EmptyGuess/EmptyGuess";
 
-function Guess({ guesses }) {
+function Guess({ guess }) {
     return (
-        <div className='guess-results'>
-            {guesses.map((guess) => (
-                <p className='guess' key={guess.id}>
-                    {guess.value}
-                </p>
-            ))}
-        </div>
+        <p className='guess' key={`${guess.id}-guess`}>
+            {guess.value ? (
+                guess.value.split("").map((letter) => (
+                    <span key={`${guess.id}-${Math.random()}`} className='cell'>
+                        {letter}
+                    </span>
+                ))
+            ) : (
+                <EmptyGuess />
+            )}
+        </p>
     );
 }
 
