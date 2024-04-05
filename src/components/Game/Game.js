@@ -8,11 +8,10 @@ import GuessGrid from "../GuessGrid/GuessGrid";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { checkGuess } from "../../game-helpers";
 import HappyBanner from "../HappyBanner/HappyBanner";
+import SadBanner from "../SadBanner/SadBanner";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
     const [guesses, setGuesses] = React.useState([]);
@@ -36,7 +35,7 @@ function Game() {
     return (
         <>
             {foundAnswer && <HappyBanner numOfGuesses={guesses.length} />}
-            {!foundAnswer && outOfGuesses && <div>you lost!</div>}
+            {!foundAnswer && outOfGuesses && <SadBanner answer={answer} />}
             <GuessGrid guesses={guesses} answer={answer} />
             <PreviousGuessList guesses={guesses} />
             <GuessInput
