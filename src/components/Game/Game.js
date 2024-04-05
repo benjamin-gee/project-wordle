@@ -6,7 +6,6 @@ import GuessInput from "../GuessInput/GuessInput";
 import PreviousGuessList from "../PreviousGuessList/PreviousGuessList";
 import GuessGrid from "../GuessGrid/GuessGrid";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
-import { checkGuess } from "../../game-helpers";
 import HappyBanner from "../HappyBanner/HappyBanner";
 import SadBanner from "../SadBanner/SadBanner";
 
@@ -27,7 +26,7 @@ function Game() {
         if (guesses.length === NUM_OF_GUESSES_ALLOWED - 1) {
             setOutOfGuesses(true);
         }
-        if (checkWin(guess, answer)) {
+        if (guess === answer) {
             setFoundAnswer(true);
             setOutOfGuesses(true);
         }
@@ -45,16 +44,5 @@ function Game() {
         </>
     );
 }
-
-const checkWin = (guess, answer) => {
-    const validatedGuess = checkGuess(guess, answer);
-
-    return !validatedGuess.some((validatedLetter) => {
-        return (
-            validatedLetter.status === "incorrect" ||
-            validatedLetter.status === "misplaced"
-        );
-    });
-};
 
 export default Game;
