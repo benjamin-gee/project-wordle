@@ -7,6 +7,7 @@ import PreviousGuessList from "../PreviousGuessList/PreviousGuessList";
 import GuessGrid from "../GuessGrid/GuessGrid";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { checkGuess } from "../../game-helpers";
+import HappyBanner from "../HappyBanner/HappyBanner";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -34,7 +35,7 @@ function Game() {
     };
     return (
         <>
-            {foundAnswer && <div>you won!</div>}
+            {foundAnswer && <HappyBanner numOfGuesses={guesses.length} />}
             {!foundAnswer && outOfGuesses && <div>you lost!</div>}
             <GuessGrid guesses={guesses} answer={answer} />
             <PreviousGuessList guesses={guesses} />
