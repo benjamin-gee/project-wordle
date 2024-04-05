@@ -1,7 +1,6 @@
 import React from "react";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function GuessInput({ updateGuesses, numOfGuesses }) {
+function GuessInput({ updateGuesses, outOfGuesses }) {
     const [input, setInput] = React.useState("");
     return (
         <form
@@ -23,7 +22,7 @@ function GuessInput({ updateGuesses, numOfGuesses }) {
                 maxLength={5}
                 title='5 letter word'
                 pattern='[a-zA-Z]{5}'
-                disabled={numOfGuesses === NUM_OF_GUESSES_ALLOWED}
+                disabled={outOfGuesses}
             />
         </form>
     );
